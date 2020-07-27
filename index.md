@@ -1,6 +1,15 @@
-# Roberto Armijo Keller
- 
+# Resumen 
 Ingeniero comercial con estudios de postgrado en Economía y Ciencias Sociales con un enfoque cuantitativo. Mi experiencia está enfocada en el estudio cuantitativo del comportamiento y preferencias, tanto en el ambito de la investigación y en la aplicación de herramientas cuantitativas al campo de la inteligencia de clientes. 
+
+### Política Analítica
+
+[Github Política Analítica](https://github.com/rarmijok/Analytical-Politics)
+
+En el ámbito del análisis político cuantitativo me he enfocado en el estudio de preferencias usando aplicaciones empíricas de la teoría espacial del voto, las cuales permiten exploración cuantitativa del espacio ideológico.
+
+En el plano metodológico he desarrollado técnicas de imputación de datos faltantes para enfrentar el problema de la no contestación en encuestas. Además me he concentrado en la problemática de como las preferencias de los individuos están sujetas a sesgos por causas diversas como sus fuentes de información y grupo socioeconómico, entre otros.
+
+
 
 ### Inteligencia de Clientes
 En el ámbito de la industria me he enfocado en el estudio de comportamiento del consumidor mediante métodos estadísticos y técnicas de machine learning. Estas herramientas me permiten definir estrategias de comerciales y de marketing basadas en evidencia empírica. Algunas aplicaciones practicas de estas herramientas:
@@ -11,11 +20,4 @@ En el ámbito de la industria me he enfocado en el estudio de comportamiento del
 * Predicción de abandono (Churn) mediante la estimación de ciclo de vida (Pareto/NBD).
 * Medición de impacto de intervenciones con contrafactual (Asignación aleatoria y grupo de control) y sin contrafactual (Series de tiempo)
 
-
-### Política Analítica
-En el ámbito del análisis político cuantitativo me he enfocado en el estudio de preferencias usando aplicaciones empíricas de la teoría espacial del voto, las cuales permiten exploración cuantitativa del espacio ideológico (Ver metodología de escalamiento multidimensional de Hinich) . 
-
-Para ver una representación gráfica e interactiva de esta metodología, usando datos de Chile ver el pie de esta página.
-
-En el plano metodológico he desarrollado técnicas de imputación de datos faltantes para enfrentar el problema de la no contestación en encuestas. Además me he concentrado en la problemática de como las preferencias de los individuos están sujetas a sesgos por causas diversas como sus fuentes de información y grupo socioeconómico, entre otros.
 
