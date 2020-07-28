@@ -7,7 +7,7 @@ Ingeniero comercial con estudios de postgrado en Economía y Ciencias Sociales c
 * [Mapa de preferencias, Chile 2009.](http://voyager1.rak.cl:3838/Mapacep61/)
 * [Demografía, Chile 2013.](http://voyager1.rak.cl:3838/Mapacep70/)
 
-En el ámbito del análisis político cuantitativo me he enfocado en el estudio de preferencias usando aplicaciones empíricas de la teoría espacial del voto, las cuales permiten exploración cuantitativa del espacio ideológico.
+En el ámbito del análisis político cuantitativo me he enfocado en el estudio de preferencias usando aplicaciones empíricas de la teoría espacial del voto, las cuales permiten exploración cuantitativa del espacio ideológico ([ver](https://raw.githubusercontent.com/rarmijok/Analytical-Politics/master/DATA/Rplot.png)).
 
 En el plano metodológico he desarrollado técnicas de imputación de datos faltantes para enfrentar el problema de la no contestación en encuestas. Además me he concentrado en la problemática de como las preferencias de los individuos están sujetas a sesgos por causas diversas como sus fuentes de información y grupo socioeconómico, entre otros.
 

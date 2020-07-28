@@ -1,4 +1,4 @@
-# About me 
+# [English](http://www.rak.cl/English/) / [Español](http://www.rak.cl/English/) 
 Ingeniero comercial con estudios de postgrado en Economía y Ciencias Sociales con un enfoque cuantitativo. Mi experiencia está enfocada en el estudio cuantitativo del comportamiento y preferencias, tanto en el ambito de la investigación y en la aplicación de herramientas cuantitativas al campo de la inteligencia de clientes. 
 
 ### Política Analítica
