@@ -17,8 +17,8 @@ En el plano metodológico he desarrollado técnicas de imputación de datos falt
 En el ámbito de la industria me he enfocado en el estudio de comportamiento del consumidor mediante métodos estadísticos y técnicas de machine learning. Estas herramientas me permiten definir estrategias de comerciales y de marketing basadas en evidencia empírica. Algunas aplicaciones practicas de estas herramientas:
 
 * Segmentación de clientes por preferencias de categoría mediante factorización de matrices no negativas y Bayes ingenuo para inferir segmentos de clientes de los cuales no se cuenta con dichos datos.
-* Segmentación de clientes por patrones gruesos de comportamiento (RMF)
-* Definir afinidad entre marcas para informar estrategias de recomendación y cross-selling, usando reglas de asociación mediante algoritmos como apriori.
+* Segmentación de clientes por patrones gruesos de comportamiento (RMF) ([ver](https://github.com/rarmijok/rarmijok.github.io/raw/master/Images/RFM.png)).
+* Definir afinidad entre marcas para informar estrategias de recomendación y cross-selling, usando reglas de asociación mediante algoritmos como apriori ([ver](https://github.com/rarmijok/rarmijok.github.io/raw/master/Images/Afinidad.png)).
 * Predicción de abandono (Churn) mediante la estimación de ciclo de vida (Pareto/NBD).
 * Medición de impacto de intervenciones con contrafactual (Asignación aleatoria y grupo de control) y sin contrafactual (Series de tiempo)
 
