@@ -2,21 +2,18 @@
 Ingeniero comercial con estudios de postgrado en Economía y Ciencias Sociales con un enfoque cuantitativo. Mi experiencia está enfocada en el estudio cuantitativo del comportamiento y preferencias, tanto en el ambito de la investigación y en la aplicación de herramientas cuantitativas al campo de la inteligencia de clientes. 
 
 ### Política Analítica
+En el ámbito del análisis social me he enfocado en el estudio de preferencias usando aplicaciones empíricas de la teoría espacial del voto, las cuales permiten la exploración cuantitativa del espacio ideológico ([ver](https://raw.githubusercontent.com/rarmijok/Analytical-Politics/master/DATA/Rplot.png)).
 
-* [Repositorio Github Política Analítica.](https://github.com/rarmijok/Analytical-Politics)
-* [Mapa de preferencias, Chile 2009.](http://voyager1.rak.cl:3838/Mapacep61/)
-* [Demografía, Chile 2013.](http://voyager1.rak.cl:3838/Mapacep70/)
+* [Mapa interactivo de preferencias, Chile 2009.](http://voyager1.rak.cl:3838/Mapacep61/)
+* [Visualización interactiva de Ideología y Demografía, Chile 2013.](http://voyager1.rak.cl:3838/Mapacep70/)
 
-En el ámbito del análisis político cuantitativo me he enfocado en el estudio de preferencias usando aplicaciones empíricas de la teoría espacial del voto, las cuales permiten exploración cuantitativa del espacio ideológico ([ver](https://raw.githubusercontent.com/rarmijok/Analytical-Politics/master/DATA/Rplot.png)).
 
 En el plano metodológico he desarrollado técnicas de imputación de datos faltantes para enfrentar el problema de la no contestación en encuestas. Además me he concentrado en la problemática de como las preferencias de los individuos están sujetas a sesgos por causas diversas como sus fuentes de información y grupo socioeconómico, entre otros.
 
-
+> [Repositorio Github Política Analítica.](https://github.com/rarmijok/Analytical-Politics)
 
 ### Inteligencia de Clientes
 
-[Repositorio github Inteligencia de Clientes
-](https://github.com/rarmijok/Customer-intelligence)
 
 En el ámbito de la industria me he enfocado en el estudio de comportamiento del consumidor mediante métodos estadísticos y técnicas de machine learning. Estas herramientas me permiten definir estrategias de comerciales y de marketing basadas en evidencia empírica. Algunas aplicaciones practicas de estas herramientas:
 
@@ -26,4 +23,4 @@ En el ámbito de la industria me he enfocado en el estudio de comportamiento del
 * Predicción de abandono (Churn) mediante la estimación de ciclo de vida (Pareto/NBD).
 * Medición de impacto de intervenciones con contrafactual (Asignación aleatoria y grupo de control) y sin contrafactual (Series de tiempo)
 
-
+> [Repositorio github Inteligencia de Clientes](https://github.com/rarmijok/Customer-intelligence)
