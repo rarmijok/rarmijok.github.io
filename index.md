@@ -3,7 +3,8 @@ Ingeniero comercial con estudios de postgrado en Economía y Ciencias Sociales c
 
 ### Política Analítica
 
-[Repositorio Github Política Analítica](https://github.com/rarmijok/Analytical-Politics)
+* [Repositorio Github Política Analítica](https://github.com/rarmijok/Analytical-Politics)
+* [Mapa de preferencias](http://voyager1.rak.cl:3838/Mapacep61/)
 
 En el ámbito del análisis político cuantitativo me he enfocado en el estudio de preferencias usando aplicaciones empíricas de la teoría espacial del voto, las cuales permiten exploración cuantitativa del espacio ideológico.
 
