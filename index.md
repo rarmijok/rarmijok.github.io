@@ -14,6 +14,10 @@ En el plano metodológico he desarrollado técnicas de imputación de datos falt
 
 
 ### Inteligencia de Clientes
+
+[Repositorio github Inteligencia de Clientes
+](https://github.com/rarmijok/Customer-intelligence)
+
 En el ámbito de la industria me he enfocado en el estudio de comportamiento del consumidor mediante métodos estadísticos y técnicas de machine learning. Estas herramientas me permiten definir estrategias de comerciales y de marketing basadas en evidencia empírica. Algunas aplicaciones practicas de estas herramientas:
 
 * Segmentación de clientes por preferencias de categoría mediante factorización de matrices no negativas y Bayes ingenuo para inferir segmentos de clientes de los cuales no se cuenta con dichos datos.
