@@ -26,3 +26,4 @@ En el ámbito de la industria me he enfocado en el estudio de comportamiento del
 * Detección de anomalías patrones.
 
 > *[Repositorio github Inteligencia de Clientes](https://github.com/rarmijok/Customer-intelligence)*
+
