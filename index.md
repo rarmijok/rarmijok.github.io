@@ -13,8 +13,7 @@ En el plano metodológico he desarrollado técnicas de imputación de datos falt
 
 > *[Repositorio Github Política Analítica.](https://github.com/rarmijok/Analytical-Politics)*
 
-### Inteligencia de Clientes
-
+### Inteligencia de Clientes.
 
 En el ámbito de la industria me he enfocado en el estudio de comportamiento del consumidor mediante métodos estadísticos y técnicas de machine learning. Estas herramientas me permiten definir estrategias de comerciales y de marketing basadas en evidencia empírica. Algunas aplicaciones practicas de estas herramientas:
 
