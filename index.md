@@ -5,3 +5,5 @@ Consultor dedicado a Marketing Analytics. Cuento con experiencia multidisciplina
 # Formación 
 
 Ingeniero comercial con estudios de postgrado en Economía (U. Adolfo Ibáñez) y Ciencia Política con un enfoque cuantitativo (U. De Texas en Austin). 
+
+### **[Contacto](mailto:contact@rak.cl)**
