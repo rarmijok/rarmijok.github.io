@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Roberto Armijo Keller</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #e8f4f8;
+      --surface: #ffffff;
+      --surface2: #f0f8fc;
+      --accent: #2a7ab8;
+      --accent-light: #d0e8f5;
+      --text: #1a2733;
+      --text-muted: #556a7a;
+      --border: #c8dfe9;
+      --radius: 12px;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      font-size: 16px;
+    }
+
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* ── HEADER ── */
+    header {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 0 2rem;
+    }
+    .header-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      padding: 2.5rem 0;
+    }
+    .avatar {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid var(--accent-light);
+      flex-shrink: 0;
+    }
+    .header-text h1 {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--text);
+      letter-spacing: -0.5px;
+    }
+    .header-text .role {
+      font-size: 1rem;
+      color: var(--accent);
+      font-weight: 500;
+      margin-top: 0.2rem;
+    }
+    .header-text .formation {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-top: 0.4rem;
+    }
+    .contact-btn {
+      display: inline-block;
+      margin-top: 0.8rem;
+      background: var(--accent);
+      color: #fff !important;
+      padding: 0.4rem 1rem;
+      border-radius: 6px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      text-decoration: none !important;
+      transition: background 0.2s;
+    }
+    .contact-btn:hover { background: #1e5f93; text-decoration: none !important; }
+
+    /* ── MAIN ── */
+    main {
+      max-width: 900px;
+      margin: 2.5rem auto;
+      padding: 0 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    /* ── SUMMARY CARD ── */
+    .summary {
+      background: var(--surface);
+      border-radius: var(--radius);
+      padding: 1.75rem 2rem;
+      border: 1px solid var(--border);
+    }
+    .summary p {
+      color: var(--text-muted);
+      font-size: 0.975rem;
+    }
+
+    /* ── SECTION CARD ── */
+    .card {
+      background: var(--surface);
+      border-radius: var(--radius);
+      padding: 1.75rem 2rem;
+      border: 1px solid var(--border);
+    }
+    .card h2 {
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: var(--accent);
+      margin-bottom: 1rem;
+      padding-bottom: 0.6rem;
+      border-bottom: 2px solid var(--accent-light);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .card p { font-size: 0.95rem; color: var(--text-muted); margin-bottom: 0.75rem; }
+    .card p:last-child { margin-bottom: 0; }
+
+    /* ── BULLET LIST ── */
+    .card ul {
+      list-style: none;
+      margin: 0.75rem 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+    .card ul li {
+      font-size: 0.92rem;
+      color: var(--text-muted);
+      padding-left: 1.2rem;
+      position: relative;
+    }
+    .card ul li::before {
+      content: '▸';
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-size: 0.75rem;
+      top: 0.22rem;
+    }
+
+    /* ── REPO LINK ── */
+    .repo-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      margin-top: 1rem;
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 0.4rem 0.9rem;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--accent);
+      transition: background 0.2s;
+    }
+    .repo-link:hover { background: var(--accent-light); text-decoration: none; }
+
+    /* ── INTERACTIVE LINKS ── */
+    .demo-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin-top: 0.75rem;
+    }
+    .demo-link {
+      background: var(--accent-light);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 0.35rem 0.8rem;
+      font-size: 0.83rem;
+      color: var(--accent);
+      font-weight: 500;
+      transition: background 0.2s;
+    }
+    .demo-link:hover { background: #b8d9ee; text-decoration: none; }
+
+    /* ── FOOTER ── */
+    footer {
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 600px) {
+      .header-inner { flex-direction: column; text-align: center; }
+      .contact-btn { display: block; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <img class="avatar" src="https://github.com/rarmijok/rarmijok.github.io/raw/master/Fotos/IMG_0725.jpg" alt="Roberto Armijo Keller" />
+    <div class="header-text">
+      <h1>Roberto Armijo Keller</h1>
+      <div class="role">Marketing Analytics Consultant</div>
+      <div class="formation">Ing. Comercial · M.A. Economía, U. Adolfo Ibáñez · Ciencia Política, U. de Texas en Austin</div>
+      <a class="contact-btn" href="mailto:contact@rak.cl">✉ Contacto</a>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <div class="summary">
+    <p>Consultor dedicado a Marketing Analytics con experiencia multidisciplinaria enfocada en el estudio cuantitativo del comportamiento y preferencias de las personas, tanto en el ámbito de la investigación como en la aplicación de herramientas cuantitativas al campo de la inteligencia de clientes.</p>
+  </div>
+
+  <div class="card">
+    <h2>📊 Inteligencia de Clientes</h2>
+    <p>Especializado en el estudio del comportamiento del consumidor mediante métodos estadísticos y técnicas de machine learning para definir estrategias comerciales y de marketing basadas en evidencia empírica.</p>
+    <ul>
+      <li>Segmentación por patrones de compra mediante factorización de matrices no negativas y Bayes ingenuo.</li>
+      <li>Segmentación por comportamiento (RFM) — <a href="https://github.com/rarmijok/rarmijok.github.io/raw/master/Images/RFM.png">ver imagen</a>.</li>
+      <li>Afinidad entre marcas para estrategias de recomendación y cross-selling vía reglas de asociación (Apriori) — <a href="https://github.com/rarmijok/rarmijok.github.io/raw/master/Images/Afinidad.png">ver imagen</a>.</li>
+      <li>Predicción de abandono (Churn) mediante estimación de ciclo de vida (Pareto/NBD).</li>
+      <li>Medición de impacto de intervenciones con y sin contrafactual (A/B testing y series de tiempo).</li>
+      <li>Detección de anomalías en patrones de comportamiento.</li>
+    </ul>
+    <a class="repo-link" href="https://github.com/rarmijok/Customer-intelligence" target="_blank">⌥ Repositorio GitHub</a>
+  </div>
+
+  <div class="card">
+    <h2>🗳 Política Analítica</h2>
+    <p>Investigación en análisis de preferencias políticas usando aplicaciones empíricas de la teoría espacial del voto (Unfolding multidimensional), explorando el espacio ideológico de forma cuantitativa.</p>
+    <ul>
+      <li>Factores de personalidad de candidatos y desafección política en la decisión de voto — <a href="https://github.com/rarmijok/rarmijok.github.io/raw/master/Docs/Political%20Dissafection%20and%20candidate%20personality.pdf">pdf</a>.</li>
+      <li>Sesgos en preferencias por fuentes de información — <a href="https://github.com/rarmijok/rarmijok.github.io/raw/master/Docs/heteroskedastic%20probit%20model.pdf">pdf</a>.</li>
+      <li>Variación por grupo socioeconómico — <a href="https://github.com/rarmijok/rarmijok.github.io/raw/master/Docs/Bayesian%20paper.pdf">pdf</a>.</li>
+      <li>Técnicas de imputación de datos faltantes para no contestación en encuestas.</li>
+    </ul>
+    <div class="demo-links">
+      <a class="demo-link" href="http://voyager1.rak.cl:3838/Mapacep61/" target="_blank">🗺 Mapa interactivo Chile 2009</a>
+      <a class="demo-link" href="http://voyager1.rak.cl:3838/Mapacep70/" target="_blank">📈 Ideología y Demografía Chile 2013</a>
+    </div>
+    <a class="repo-link" href="https://github.com/rarmijok/Analytical-Politics" target="_blank">⌥ Repositorio GitHub</a>
+  </div>
+
+</main>
+
+<footer>© 2020 Roberto Armijo Keller</footer>
+
+</body>
+</html>
