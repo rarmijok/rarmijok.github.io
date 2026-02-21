@@ -31,6 +31,37 @@
     a { color: var(--accent); text-decoration: none; }
     a:hover { text-decoration: underline; }
 
+    /* ── LANGUAGE TOGGLE ── */
+    .lang-toggle {
+      position: fixed;
+      top: 1rem;
+      right: 1rem;
+      display: flex;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      overflow: hidden;
+      z-index: 100;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    }
+    .lang-btn {
+      padding: 0.5rem 1rem;
+      font-size: 0.85rem;
+      font-weight: 500;
+      cursor: pointer;
+      border: none;
+      background: transparent;
+      color: var(--text-muted);
+      transition: all 0.2s;
+    }
+    .lang-btn.active {
+      background: var(--accent);
+      color: #fff;
+    }
+    .lang-btn:hover:not(.active) {
+      background: var(--surface2);
+    }
+
     /* ── HEADER ── */
     header {
       background: var(--surface);
@@ -199,17 +230,46 @@
       .header-inner { flex-direction: column; text-align: center; }
       .contact-btn { display: block; text-align: center; }
     }
+
+    /* Hide/show language content */
+    [data-lang="en"] { display: none; }
+    html[lang="en"] [data-lang="es"] { display: none; }
+    html[lang="en"] [data-lang="en"] { display: block; }
+    html[lang="en"] .card ul { display: flex; }
   </style>
 </head>
 <body>
+
+<div class="lang-toggle">
+  <button class="lang-btn active" data-lang-btn="es" onclick="setLang('es')">ES</button>
+  <button class="lang-btn" data-lang-btn="en" onclick="setLang('en')">EN</button>
+</div>
+
+<script>
+  function setLang(lang) {
+    document.documentElement.lang = lang;
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+      btn.classList.toggle('active', btn.dataset.langBtn === lang);
+    });
+    // Save preference
+    localStorage.setItem('lang', lang);
+  }
+  // Load saved preference
+  const saved = localStorage.getItem('lang');
+  if (saved) setLang(saved);
+</script>
 
 <header>
   <div class="header-inner">
     <img class="avatar" src="https://github.com/rarmijok/rarmijok.github.io/raw/master/Fotos/IMG_0725.jpg" alt="Roberto Armijo Keller" />
     <div class="header-text">
       <h1>Roberto Armijo Keller</h1>
-      <div class="role">Marketing Analytics Consultant</div>
+      
+      <div class="role" data-lang="es">Consultor en Marketing Analytics</div>
+      <div class="role" data-lang="en">Marketing Analytics Consultant</div>
+      
       <div class="formation">Ing. Comercial · M.A. Economía, U. Adolfo Ibáñez · Ciencia Política, U. de Texas en Austin</div>
+      
       <a class="contact-btn" href="mailto:contact@rak.cl">✉ Contacto</a>
     </div>
   </div>
@@ -218,37 +278,63 @@
 <main>
 
   <div class="summary">
-    <p>Consultor dedicado a Marketing Analytics con experiencia multidisciplinaria enfocada en el estudio cuantitativo del comportamiento y preferencias de las personas, tanto en el ámbito de la investigación como en la aplicación de herramientas cuantitativas al campo de la inteligencia de clientes.</p>
+    <p data-lang="es">Consultor dedicado a Marketing Analytics con experiencia multidisciplinaria enfocada en el estudio cuantitativo del comportamiento y preferencias de las personas, tanto en el ámbito de la investigación como en la aplicación de herramientas cuantitativas al campo de la inteligencia de clientes.</p>
+    <p data-lang="en">Marketing Analytics consultant with multidisciplinary experience focused on the quantitative study of consumer behavior and preferences, both in research and in applying quantitative tools to customer intelligence.</p>
   </div>
 
   <div class="card">
-    <h2>📊 Inteligencia de Clientes</h2>
-    <p>Especializado en el estudio del comportamiento del consumidor mediante métodos estadísticos y técnicas de machine learning para definir estrategias comerciales y de marketing basadas en evidencia empírica.</p>
+    <h2>📊 <span data-lang="es">Inteligencia de Clientes</span><span data-lang="en">Customer Intelligence</span></h2>
+    
+    <p data-lang="es">Especializado en el estudio del comportamiento del consumidor mediante métodos estadísticos y técnicas de machine learning para definir estrategias comerciales y de marketing basadas en evidencia empírica.</p>
+    <p data-lang="en">Specialized in consumer behavior study using statistical methods and machine learning techniques to define commercial and marketing strategies based on empirical evidence.</p>
+    
     <ul>
-      <li>Segmentación por patrones de compra mediante factorización de matrices no negativas y Bayes ingenuo.</li>
-      <li>Segmentación por comportamiento (RFM) — <a href="https://github.com/rarmijok/rarmijok.github.io/raw/master/Images/RFM.png">ver imagen</a>.</li>
-      <li>Afinidad entre marcas para estrategias de recomendación y cross-selling vía reglas de asociación (Apriori) — <a href="https://github.com/rarmijok/rarmijok.github.io/raw/master/Images/Afinidad.png">ver imagen</a>.</li>
-      <li>Predicción de abandono (Churn) mediante estimación de ciclo de vida (Pareto/NBD).</li>
-      <li>Medición de impacto de intervenciones con y sin contrafactual (A/B testing y series de tiempo).</li>
-      <li>Detección de anomalías en patrones de comportamiento.</li>
+      <li data-lang="es">Segmentación por patrones de compra mediante factorización de matrices no negativas y Bayes ingenuo.</li>
+      <li data-lang="en">Customer segmentation by purchase patterns using non-negative matrix factorization and naive Bayes.</li>
+      
+      <li data-lang="es">Segmentación por comportamiento (RFM) — <a href="https://github.com/rarmijok/rarmijok.github.io/raw/master/Images/RFM.png">ver imagen</a>.</li>
+      <li data-lang="en">Segmentation by coarse behavior patterns (RFM) — <a href="https://github.com/rarmijok/rarmijok.github.io/raw/master/Images/RFM.png">view image</a>.</li>
+      
+      <li data-lang="es">Afinidad entre marcas para estrategias de recomendación y cross-selling vía reglas de asociación (Apriori) — <a href="https://github.com/rarmijok/rarmijok.github.io/raw/master/Images/Afinidad.png">ver imagen</a>.</li>
+      <li data-lang="en">Brand affinity for recommendation and cross-selling strategies using association rule mining (Apriori) — <a href="https://github.com/rarmijok/rarmijok.github.io/raw/master/Images/Afinidad.png">view image</a>.</li>
+      
+      <li data-lang="es">Predicción de abandono (Churn) mediante estimación de ciclo de vida (Pareto/NBD).</li>
+      <li data-lang="en">Churn prediction using lifetime value estimation (Pareto/NBD).</li>
+      
+      <li data-lang="es">Medición de impacto de intervenciones con y sin contrafactual (A/B testing y series de tiempo).</li>
+      <li data-lang="en">Impact measurement of interventions with and without counterfactual (A/B testing and time series).</li>
+      
+      <li data-lang="es">Detección de anomalías en patrones de comportamiento.</li>
+      <li data-lang="en">Anomaly detection in behavior patterns.</li>
     </ul>
-    <a class="repo-link" href="https://github.com/rarmijok/Customer-intelligence" target="_blank">⌥ Repositorio GitHub</a>
+    <a class="repo-link" href="https://github.com/rarmijok/Customer-intelligence" target="_blank">⌥ GitHub</a>
   </div>
 
   <div class="card">
-    <h2>🗳 Política Analítica</h2>
-    <p>Investigación en análisis de preferencias políticas usando aplicaciones empíricas de la teoría espacial del voto (Unfolding multidimensional), explorando el espacio ideológico de forma cuantitativa.</p>
+    <h2>🗳 <span data-lang="es">Política Analítica</span><span data-lang="en">Analytical Politics</span></h2>
+    
+    <p data-lang="es">Investigación en análisis de preferencias políticas usando aplicaciones empíricas de la teoría espacial del voto (Unfolding multidimensional), explorando el espacio ideológico de forma cuantitativa.</p>
+    <p data-lang="en">Research on political preference analysis using empirical applications of spatial voting theory (multidimensional unfolding), exploring ideological space quantitatively.</p>
+    
     <ul>
-      <li>Factores de personalidad de candidatos y desafección política en la decisión de voto — <a href="https://github.com/rarmijok/rarmijok.github.io/raw/master/Docs/Political%20Dissafection%20and%20candidate%20personality.pdf">pdf</a>.</li>
-      <li>Sesgos en preferencias por fuentes de información — <a href="https://github.com/rarmijok/rarmijok.github.io/raw/master/Docs/heteroskedastic%20probit%20model.pdf">pdf</a>.</li>
-      <li>Variación por grupo socioeconómico — <a href="https://github.com/rarmijok/rarmijok.github.io/raw/master/Docs/Bayesian%20paper.pdf">pdf</a>.</li>
-      <li>Técnicas de imputación de datos faltantes para no contestación en encuestas.</li>
+      <li data-lang="es">Factores de personalidad de candidatos y desafección política en la decisión de voto — <a href="https://github.com/rarmijok/rarmijok.github.io/raw/master/Docs/Political%20Dissafection%20and%20candidate%20personality.pdf">pdf</a>.</li>
+      <li data-lang="en">Candidate personality factors and political disaffection in voting decisions — <a href="https://github.com/rarmijok/rarmijok.github.io/raw/master/Docs/Political%20Dissafection%20and%20candidate%20personality.pdf">pdf</a>.</li>
+      
+      <li data-lang="es">Sesgos en preferencias por fuentes de información — <a href="https://github.com/rarmijok/rarmijok.github.io/raw/master/Docs/heteroskedastic%20probit%20model.pdf">pdf</a>.</li>
+      <li data-lang="en">Biases in preferences due to information sources — <a href="https://github.com/rarmijok/rarmijok.github.io/raw/master/Docs/heteroskedastic%20probit%20model.pdf">pdf</a>.</li>
+      
+      <li data-lang="es">Variación por grupo socioeconómico — <a href="https://github.com/rarmijok/rarmijok.github.io/raw/master/Docs/Bayesian%20paper.pdf">pdf</a>.</li>
+      <li data-lang="en">Variation by socioeconomic group — <a href="https://github.com/rarmijok/rarmijok.github.io/raw/master/Docs/Bayesian%20paper.pdf">pdf</a>.</li>
+      
+      <li data-lang="es">Técnicas de imputación de datos faltantes para no contestación en encuestas.</li>
+      <li data-lang="en">Missing data imputation techniques for non-response in surveys.</li>
     </ul>
+    
     <div class="demo-links">
-      <a class="demo-link" href="http://voyager1.rak.cl:3838/Mapacep61/" target="_blank">🗺 Mapa interactivo Chile 2009</a>
-      <a class="demo-link" href="http://voyager1.rak.cl:3838/Mapacep70/" target="_blank">📈 Ideología y Demografía Chile 2013</a>
+      <a class="demo-link" href="http://voyager1.rak.cl:3838/Mapacep61/" target="_blank">🗺 <span data-lang="es">Mapa Chile 2009</span><span data-lang="en">Map Chile 2009</span></a>
+      <a class="demo-link" href="http://voyager1.rak.cl:3838/Mapacep70/" target="_blank">📈 <span data-lang="es">Ideología y Demografía Chile 2013</span><span data-lang="en">Ideology & Demographics Chile 2013</span></a>
     </div>
-    <a class="repo-link" href="https://github.com/rarmijok/Analytical-Politics" target="_blank">⌥ Repositorio GitHub</a>
+    <a class="repo-link" href="https://github.com/rarmijok/Analytical-Politics" target="_blank">⌥ GitHub</a>
   </div>
 
 </main>
