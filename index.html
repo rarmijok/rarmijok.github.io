@@ -263,6 +263,10 @@
     });
     // Save preference
     localStorage.setItem('lang', lang);
+    // Track language change in GA4
+    if (typeof gtag !== 'undefined') {
+      gtag('event', 'language_view', { 'language': lang });
+    }
   }
   // Load saved preference
   const saved = localStorage.getItem('lang');
