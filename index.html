@@ -23,18 +23,16 @@
       --surface: #1e2736;
       --surface2: #263040;
       --surface-hover: #2a3548;
-      --accent: #4fc3f7;
-      --accent2: #81d4fa;
-      --accent-hover: #d4784a;
-      --accent-hover-dim: rgba(212, 120, 74, 0.12);
-      --accent-dim: rgba(79, 195, 247, 0.12);
+      --accent: #d4784a;
+      --accent-light: #e09060;
+      --accent-dim: rgba(212, 120, 74, 0.10);
       --text: #e8edf2;
-      --text-muted: #8a9bb0;
-      --text-dim: #5a6a7a;
-      --border: #2e3d4f;
-      --border-light: #3a4a5c;
+      --text-muted: #94a3b8;
+      --text-dim: #5e7086;
+      --border: #2a3747;
+      --border-light: #374759;
       --radius: 16px;
-      --glow: 0 0 30px rgba(79, 195, 247, 0.06);
+      --glow: 0 0 30px rgba(212, 120, 74, 0.05);
     }
 
     body {
@@ -47,7 +45,7 @@
     }
 
     a { color: var(--accent); text-decoration: none; transition: color 0.2s; }
-    a:hover { color: var(--accent2); text-decoration: none; }
+    a:hover { color: var(--accent-light); text-decoration: none; }
 
     /* ── LANGUAGE TOGGLE ── */
     .lang-toggle {
@@ -86,7 +84,7 @@
 
     /* ── HEADER ── */
     header {
-      background: linear-gradient(170deg, #161d28 0%, #1c2840 40%, #1f2f4a 70%, #161d28 100%);
+      background: linear-gradient(170deg, #161d28 0%, #1a2538 40%, #1d2b42 70%, #161d28 100%);
       border-bottom: 1px solid var(--border);
       padding: 0 2rem;
       position: relative;
@@ -99,7 +97,7 @@
       right: -20%;
       width: 600px;
       height: 600px;
-      background: radial-gradient(circle, rgba(79, 195, 247, 0.06) 0%, transparent 70%);
+      background: radial-gradient(circle, rgba(212, 120, 74, 0.04) 0%, transparent 70%);
       pointer-events: none;
     }
     header::after {
@@ -109,7 +107,7 @@
       left: -10%;
       width: 400px;
       height: 400px;
-      background: radial-gradient(circle, rgba(255, 183, 77, 0.04) 0%, transparent 70%);
+      background: radial-gradient(circle, rgba(212, 120, 74, 0.03) 0%, transparent 70%);
       pointer-events: none;
     }
     .header-inner {
@@ -127,9 +125,9 @@
       height: 160px;
       border-radius: 50%;
       object-fit: cover;
-      border: 3px solid var(--accent-hover);
+      border: 3px solid var(--accent);
       flex-shrink: 0;
-      box-shadow: 0 8px 40px rgba(0,0,0,0.4), 0 0 0 1px rgba(212,120,74,0.15);
+      box-shadow: 0 8px 40px rgba(0,0,0,0.4), 0 0 0 1px rgba(212,120,74,0.1);
       transition: transform 0.4s, box-shadow 0.4s;
     }
     .avatar:hover {
@@ -140,7 +138,7 @@
       font-family: 'DM Serif Display', serif;
       font-size: 2.4rem;
       font-weight: 400;
-      color: var(--accent-hover);
+      color: var(--accent);
       letter-spacing: -0.5px;
       line-height: 1.15;
     }
@@ -181,18 +179,12 @@
     .contact-btn:hover {
       background: var(--accent-dim);
       border-color: var(--accent);
-      color: var(--accent2) !important;
+      color: var(--accent-light) !important;
       text-decoration: none !important;
       transform: translateY(-1px);
     }
     .contact-btn.linkedin {
       background: transparent;
-      border-color: #0077b5;
-      color: #4fc3f7 !important;
-    }
-    .contact-btn.linkedin:hover {
-      background: rgba(0, 119, 181, 0.12);
-      border-color: #29b6f6;
     }
 
     /* ── MAIN ── */
@@ -224,34 +216,23 @@
       border: 1px solid var(--border);
       box-shadow: var(--glow);
       transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s, box-shadow 0.3s;
-      position: relative;
-    }
-    .summary::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 3px;
-      height: 100%;
-      border-radius: var(--radius) 0 0 var(--radius);
-      background: var(--accent-hover);
-      opacity: 0;
-      transition: opacity 0.3s;
     }
     .summary:hover {
-      border-color: var(--border-light);
+      border-color: var(--accent);
       transform: translateY(-2px);
       box-shadow: 0 8px 40px rgba(0,0,0,0.2);
     }
-    .summary:hover::before { opacity: 1; }
     .summary h2 {
       font-family: 'DM Serif Display', serif;
       font-size: 1.25rem;
       font-weight: 400;
-      color: var(--accent-hover);
+      color: var(--accent);
       margin-bottom: 1rem;
       padding-bottom: 0.7rem;
       border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
     }
     .summary p {
       color: var(--text-muted);
@@ -267,34 +248,18 @@
       padding: 2rem 2.2rem;
       border: 1px solid var(--border);
       transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s, box-shadow 0.3s;
-      position: relative;
-    }
-    .card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 3px;
-      height: 100%;
-      border-radius: var(--radius) 0 0 var(--radius);
-      opacity: 0;
-      transition: opacity 0.3s;
     }
     .card:hover {
-      border-color: var(--border-light);
+      border-color: var(--accent);
       transform: translateY(-2px);
       box-shadow: 0 8px 40px rgba(0,0,0,0.2);
     }
-    .card:hover::before { opacity: 1; }
-
-    /* Card accent - unified burnt orange */
-    .card::before { background: var(--accent-hover); }
 
     .card h2 {
       font-family: 'DM Serif Display', serif;
       font-size: 1.25rem;
       font-weight: 400;
-      color: var(--accent-hover);
+      color: var(--accent);
       margin-bottom: 1rem;
       padding-bottom: 0.7rem;
       border-bottom: 1px solid var(--border);
@@ -312,7 +277,29 @@
       border-radius: 8px;
       flex-shrink: 0;
     }
-    .card h2 .emoji { background: var(--accent-hover-dim); }
+    .card h2 .title-icon,
+    .summary h2 .title-icon {
+      width: 1.7rem;
+      height: 1.7rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 7px;
+      background: var(--accent-dim);
+      flex-shrink: 0;
+    }
+    .card h2 .title-icon svg,
+    .summary h2 .title-icon svg {
+      width: 15px;
+      height: 15px;
+      stroke: var(--accent);
+      fill: none;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .card h2 .emoji { background: var(--accent-dim); }
 
     .card p {
       font-size: 0.92rem;
@@ -349,7 +336,7 @@
       border-radius: 50%;
       background: var(--text-dim);
     }
-    .card ul li::before { background: var(--accent-hover); }
+    .card ul li::before { background: var(--accent); }
 
     /* ── REPO LINK ── */
     .repo-link {
@@ -386,13 +373,13 @@
       border-radius: 8px;
       padding: 0.4rem 0.9rem;
       font-size: 0.82rem;
-      color: var(--accent-hover);
+      color: var(--accent);
       font-weight: 500;
       transition: all 0.25s;
     }
     .demo-link:hover {
-      background: var(--accent-hover-dim);
-      border-color: var(--accent-hover);
+      background: var(--accent-dim);
+      border-color: var(--accent);
       text-decoration: none;
     }
 
@@ -432,13 +419,13 @@
       align-items: center;
       justify-content: center;
       border-radius: 6px;
-      background: var(--accent-hover-dim);
+      background: var(--accent-dim);
       flex-shrink: 0;
     }
     .tech-category-icon svg {
       width: 14px;
       height: 14px;
-      stroke: var(--accent-hover);
+      stroke: var(--accent);
       fill: none;
       stroke-width: 2;
       stroke-linecap: round;
@@ -463,9 +450,9 @@
       transition: all 0.2s;
     }
     .tech-tag:hover {
-      border-color: var(--accent-hover);
-      color: var(--accent-hover);
-      background: var(--accent-hover-dim);
+      border-color: var(--accent);
+      color: var(--accent);
+      background: var(--accent-dim);
     }
 
     /* ── FOOTER ── */
@@ -559,7 +546,7 @@
       <div class="formation">Ing. Comercial · M.A. Economía, U. Adolfo Ibáñez · M.A. Ciencia Política, U. de Texas en Austin</div>
 
       <div class="header-buttons">
-        <a class="contact-btn" href="mailto:roberto@rak.cl" onclick="if(typeof gtag!=='undefined')gtag('event','click',{'event_category':'contact','method':'email'});">✉ E-mail</a>
+        <a class="contact-btn" href="mailto:roberto@rak.cl" onclick="if(typeof gtag!=='undefined')gtag('event','click',{'event_category':'contact','method':'email'});"><svg style="width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22 6 12 13 2 6"></polyline></svg> E-mail</a>
         <a class="contact-btn linkedin" href="https://www.linkedin.com/in/robertoarmijokeller/" target="_blank" onclick="if(typeof gtag!=='undefined')gtag('event','click',{'event_category':'contact','method':'linkedin'});">in LinkedIn</a>
       </div>
     </div>
@@ -569,14 +556,13 @@
 <main>
 
   <div class="summary reveal">
-    <h2 data-lang="es">Resumen</h2>
-    <h2 data-lang="en">Summary</h2>
+    <h2><span class="title-icon"><svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg></span> <span data-lang="es">Resumen</span><span data-lang="en">Summary</span></h2>
     <p data-lang="es">Senior Analytics Manager con más de 10 años de experiencia en Data Science y Marketing Analytics para servicios financieros, retail, e-commerce y consultoría. Especialista en análisis de datos transaccionales y Digital Analytics mediante Machine Learning aplicado al comportamiento del consumidor. Experiencia en inteligencia y segmentación de clientes, Customer Experience, automatización de marketing y migración de procesos analíticos a la nube (AWS). Bilingüe (español/inglés), con trayectoria liderando equipos multidisciplinarios de Data Scientists, Data Engineers y Analistas.</p>
     <p data-lang="en">Senior Analytics Manager with 10+ years of experience in Data Science and Marketing Analytics for financial services, retail, e-commerce, and consulting. Specialized in transactional data analysis and Digital Analytics through Machine Learning applied to consumer behavior. Experienced in customer intelligence and segmentation, Customer Experience, marketing automation, and cloud migration of analytical processes (AWS). Bilingual (Spanish/English), with a track record leading multidisciplinary teams of Data Scientists, Data Engineers, and Analysts.</p>
   </div>
 
   <div class="card reveal">
-    <h2><span data-lang="es">Liderazgo &amp; Consultoría</span><span data-lang="en">Leadership &amp; Consulting</span></h2>
+    <h2><span class="title-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"></polygon></svg></span> <span data-lang="es">Liderazgo &amp; Consultoría</span><span data-lang="en">Leadership &amp; Consulting</span></h2>
 
     <p data-lang="es">Con más de 10 años de experiencia, he liderado equipos de Data Scientists y Data Engineers en proyectos de alta visibilidad para clientes en servicios financieros, consumo masivo y retail. Mi enfoque combina la formación técnica de equipos con la entrega de resultados concretos y medibles para el negocio.</p>
     <p data-lang="en">With over 10 years of experience, I have led Data Science and Data Engineering teams on high-visibility projects for clients in financial services, consumer goods, and retail. My approach combines building technically strong teams with delivering concrete, measurable business results.</p>
@@ -597,7 +583,7 @@
   </div>
 
   <div class="card reveal">
-    <h2><span data-lang="es">Inteligencia de Clientes</span><span data-lang="en">Customer Intelligence</span></h2>
+    <h2><span class="title-icon"><svg viewBox="0 0 24 24"><path d="M21.21 15.89A10 10 0 1 1 8 2.83"></path><path d="M22 12A10 10 0 0 0 12 2v10z"></path></svg></span> <span data-lang="es">Inteligencia de Clientes</span><span data-lang="en">Customer Intelligence</span></h2>
 
     <p data-lang="es">Especializado en el estudio del comportamiento del consumidor mediante métodos estadísticos y técnicas de machine learning para definir estrategias comerciales y de marketing basadas en evidencia empírica.</p>
     <p data-lang="en">Specialized in consumer behavior study using statistical methods and machine learning techniques to define commercial and marketing strategies based on empirical evidence.</p>
@@ -637,7 +623,7 @@
   </div>
 
   <div class="card reveal">
-    <h2><span data-lang="es">Política Analítica</span><span data-lang="en">Analytical Politics</span></h2>
+    <h2><span class="title-icon"><svg viewBox="0 0 24 24"><path d="M12 20V10"></path><path d="M18 20V4"></path><path d="M6 20v-4"></path></svg></span> <span data-lang="es">Política Analítica</span><span data-lang="en">Analytical Politics</span></h2>
 
     <p data-lang="es">Investigación en análisis de preferencias políticas usando aplicaciones empíricas de la teoría espacial del voto (Unfolding multidimensional), explorando el espacio ideológico de forma cuantitativa.</p>
     <p data-lang="en">Research on political preference analysis using empirical applications of spatial voting theory (multidimensional unfolding), exploring ideological space quantitatively.</p>
@@ -667,7 +653,7 @@
   </div>
 
   <div class="card reveal">
-    <h2><span data-lang="es">Herramientas</span><span data-lang="en">Tools</span></h2>
+    <h2><span class="title-icon"><svg viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path></svg></span> <span data-lang="es">Herramientas</span><span data-lang="en">Tools</span></h2>
 
     <div class="tech-categories">
       <div class="tech-category">
