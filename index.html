@@ -33,6 +33,12 @@
       --border-light: #374759;
       --radius: 16px;
       --glow: 0 0 30px rgba(212, 120, 74, 0.05);
+      --nav-height: 52px;
+      /* Per-section accent colors */
+      --c-leadership: #5b9bd5;
+      --c-intelligence: #d4784a;
+      --c-politics: #9b7ecb;
+      --c-tools: #52a98b;
     }
 
     body {
@@ -47,22 +53,84 @@
     a { color: var(--accent); text-decoration: none; transition: color 0.2s; }
     a:hover { color: var(--accent-light); text-decoration: none; }
 
-    /* ── LANGUAGE TOGGLE ── */
-    .lang-toggle {
+    /* ── SCROLL PROGRESS BAR ── */
+    #progress-bar {
       position: fixed;
-      top: 1.2rem;
-      right: 1.5rem;
+      top: 0;
+      left: 0;
+      width: 0%;
+      height: 3px;
+      background: linear-gradient(90deg, var(--accent), var(--accent-light));
+      z-index: 200;
+      transition: width 0.1s linear;
+      border-radius: 0 2px 2px 0;
+      pointer-events: none;
+    }
+
+    /* ── STICKY NAV ── */
+    .top-nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(22, 29, 40, 0.92);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      box-shadow: 0 2px 20px rgba(0,0,0,0.3);
+    }
+    .nav-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      height: var(--nav-height);
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+    }
+    .nav-brand {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.1rem;
+      color: var(--accent);
+      letter-spacing: 1px;
+      flex-shrink: 0;
+    }
+    .nav-links {
+      display: flex;
+      gap: 0.15rem;
+      flex: 1;
+    }
+    .nav-link {
+      padding: 0.35rem 0.7rem;
+      font-size: 0.78rem;
+      font-weight: 500;
+      color: var(--text-dim);
+      border-radius: 7px;
+      transition: all 0.2s;
+      white-space: nowrap;
+      letter-spacing: 0.3px;
+    }
+    .nav-link:hover {
+      color: var(--text);
+      background: var(--surface2);
+      text-decoration: none;
+    }
+    .nav-link.active {
+      color: var(--accent);
+      background: var(--accent-dim);
+    }
+
+    /* ── LANGUAGE TOGGLE (integrated in nav) ── */
+    .lang-toggle {
       display: flex;
       background: var(--surface);
       border: 1px solid var(--border);
       border-radius: 10px;
       overflow: hidden;
-      z-index: 100;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+      flex-shrink: 0;
     }
     .lang-btn {
-      padding: 0.5rem 1.1rem;
-      font-size: 0.82rem;
+      padding: 0.4rem 0.9rem;
+      font-size: 0.78rem;
       font-weight: 500;
       cursor: pointer;
       border: none;
@@ -116,7 +184,7 @@
       display: flex;
       align-items: center;
       gap: 2.5rem;
-      padding: 3.5rem 0;
+      padding: 4.5rem 0;
       position: relative;
       z-index: 1;
     }
@@ -146,20 +214,20 @@
       font-size: 0.95rem;
       color: var(--accent);
       font-weight: 500;
-      margin-top: 0.5rem;
+      margin-top: 0.6rem;
       letter-spacing: 0.3px;
     }
     .header-text .formation {
       font-size: 0.82rem;
       color: var(--text-dim);
-      margin-top: 0.5rem;
+      margin-top: 0.6rem;
       font-weight: 300;
       letter-spacing: 0.2px;
     }
     .header-buttons {
       display: flex;
       gap: 0.6rem;
-      margin-top: 1.2rem;
+      margin-top: 1.6rem;
     }
     .contact-btn {
       display: inline-flex;
@@ -183,9 +251,7 @@
       text-decoration: none !important;
       transform: translateY(-1px);
     }
-    .contact-btn.linkedin {
-      background: transparent;
-    }
+    .contact-btn.linkedin { background: transparent; }
 
     /* ── MAIN ── */
     main {
@@ -208,17 +274,24 @@
       transform: translateY(0);
     }
 
+    /* ── SCROLL MARGIN FOR STICKY NAV ── */
+    .summary, .card {
+      scroll-margin-top: calc(var(--nav-height) + 1rem);
+    }
+
     /* ── SUMMARY CARD ── */
     .summary {
       background: var(--surface);
       border-radius: var(--radius);
       padding: 2rem 2.2rem;
       border: 1px solid var(--border);
+      border-left: 3px solid var(--accent);
       box-shadow: var(--glow);
       transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s, box-shadow 0.3s;
     }
     .summary:hover {
       border-color: var(--accent);
+      border-left-color: var(--accent);
       transform: translateY(-2px);
       box-shadow: 0 8px 40px rgba(0,0,0,0.2);
     }
@@ -247,13 +320,37 @@
       border-radius: var(--radius);
       padding: 2rem 2.2rem;
       border: 1px solid var(--border);
+      border-left: 3px solid var(--accent);
       transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s, box-shadow 0.3s;
     }
     .card:hover {
-      border-color: var(--accent);
       transform: translateY(-2px);
       box-shadow: 0 8px 40px rgba(0,0,0,0.2);
     }
+
+    /* Per-section left border + hover border */
+    .card[data-section="leadership"] { border-left-color: var(--c-leadership); }
+    .card[data-section="intelligence"] { border-left-color: var(--c-intelligence); }
+    .card[data-section="politics"] { border-left-color: var(--c-politics); }
+    .card[data-section="tools"] { border-left-color: var(--c-tools); }
+
+    .card[data-section="leadership"]:hover { border-color: var(--c-leadership); }
+    .card[data-section="intelligence"]:hover { border-color: var(--c-intelligence); }
+    .card[data-section="politics"]:hover { border-color: var(--c-politics); }
+    .card[data-section="tools"]:hover { border-color: var(--c-tools); }
+
+    /* Per-section heading + icon colors */
+    .card[data-section="leadership"] h2 { color: var(--c-leadership); }
+    .card[data-section="leadership"] h2 .title-icon { background: rgba(91, 155, 213, 0.12); }
+    .card[data-section="leadership"] h2 .title-icon svg { stroke: var(--c-leadership); }
+
+    .card[data-section="politics"] h2 { color: var(--c-politics); }
+    .card[data-section="politics"] h2 .title-icon { background: rgba(155, 126, 203, 0.12); }
+    .card[data-section="politics"] h2 .title-icon svg { stroke: var(--c-politics); }
+
+    .card[data-section="tools"] h2 { color: var(--c-tools); }
+    .card[data-section="tools"] h2 .title-icon { background: rgba(82, 169, 139, 0.12); }
+    .card[data-section="tools"] h2 .title-icon svg { stroke: var(--c-tools); }
 
     .card h2 {
       font-family: 'DM Serif Display', serif;
@@ -266,16 +363,6 @@
       display: flex;
       align-items: center;
       gap: 0.6rem;
-    }
-    .card h2 .emoji {
-      font-size: 1.1rem;
-      display: inline-flex;
-      width: 2rem;
-      height: 2rem;
-      align-items: center;
-      justify-content: center;
-      border-radius: 8px;
-      flex-shrink: 0;
     }
     .card h2 .title-icon,
     .summary h2 .title-icon {
@@ -299,8 +386,6 @@
       stroke-linejoin: round;
     }
 
-    .card h2 .emoji { background: var(--accent-dim); }
-
     .card p {
       font-size: 0.92rem;
       color: var(--text-muted);
@@ -313,7 +398,7 @@
     /* ── BULLET LIST ── */
     .card ul {
       list-style: none;
-      margin: 0.75rem 0;
+      margin: 0.5rem 0;
       display: flex;
       flex-direction: column;
       gap: 0.55rem;
@@ -334,9 +419,23 @@
       width: 5px;
       height: 5px;
       border-radius: 50%;
-      background: var(--text-dim);
+      background: var(--accent);
     }
-    .card ul li::before { background: var(--accent); }
+    .card[data-section="leadership"] ul li::before { background: var(--c-leadership); }
+    .card[data-section="politics"] ul li::before { background: var(--c-politics); }
+    .card[data-section="tools"] ul li::before { background: var(--c-tools); }
+
+    /* ── BULLET SUBGROUPS ── */
+    .bullet-group { margin-top: 1.2rem; }
+    .bullet-group-label {
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      color: rgba(212, 120, 74, 0.55);
+      margin-bottom: 0.5rem;
+      padding-left: 1.4rem;
+    }
 
     /* ── REPO LINK ── */
     .repo-link {
@@ -389,9 +488,6 @@
       grid-template-columns: 1fr 1fr;
       gap: 0.75rem;
     }
-    @media (max-width: 600px) {
-      .tech-categories { grid-template-columns: 1fr; }
-    }
     .tech-grid {
       display: flex;
       flex-wrap: wrap;
@@ -405,7 +501,7 @@
       padding: 1rem 1.1rem;
       transition: border-color 0.25s;
     }
-    .tech-category:hover { border-color: var(--border-light); }
+    .tech-category:hover { border-color: var(--c-tools); }
     .tech-category-header {
       display: flex;
       align-items: center;
@@ -419,13 +515,13 @@
       align-items: center;
       justify-content: center;
       border-radius: 6px;
-      background: var(--accent-dim);
+      background: rgba(82, 169, 139, 0.12);
       flex-shrink: 0;
     }
     .tech-category-icon svg {
       width: 14px;
       height: 14px;
-      stroke: var(--accent);
+      stroke: var(--c-tools);
       fill: none;
       stroke-width: 2;
       stroke-linecap: round;
@@ -434,7 +530,7 @@
     .tech-category-label {
       font-size: 0.72rem;
       font-weight: 600;
-      color: var(--text-dim);
+      color: var(--c-tools);
       text-transform: uppercase;
       letter-spacing: 1.2px;
     }
@@ -450,9 +546,47 @@
       transition: all 0.2s;
     }
     .tech-tag:hover {
+      border-color: var(--c-tools);
+      color: var(--c-tools);
+      background: rgba(82, 169, 139, 0.08);
+    }
+
+    /* ── SCROLL TO TOP ── */
+    #scroll-top {
+      position: fixed;
+      bottom: 2rem;
+      right: 1.5rem;
+      width: 2.4rem;
+      height: 2.4rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      opacity: 0;
+      transform: translateY(10px);
+      transition: all 0.3s;
+      z-index: 99;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.3);
+    }
+    #scroll-top.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    #scroll-top:hover {
+      background: var(--surface2);
       border-color: var(--accent);
-      color: var(--accent);
-      background: var(--accent-dim);
+    }
+    #scroll-top svg {
+      width: 16px;
+      height: 16px;
+      stroke: var(--accent);
+      fill: none;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
     }
 
     /* ── FOOTER ── */
@@ -495,13 +629,12 @@
       .header-text h1 { font-size: 1.8rem; }
       .header-buttons { justify-content: center; }
       .avatar { width: 130px; height: 130px; }
-      footer {
-        flex-direction: column;
-        text-align: center;
-      }
+      footer { flex-direction: column; text-align: center; }
+      .nav-links { display: none; }
+      .tech-categories { grid-template-columns: 1fr; }
     }
 
-    /* Hide/show language content */
+    /* ── HIDE/SHOW LANGUAGE CONTENT ── */
     [data-lang="en"] { display: none; }
     html[lang="en"] [data-lang="es"] { display: none; }
     html[lang="en"] [data-lang="en"] { display: block; }
@@ -510,14 +643,32 @@
     html[lang="en"] .header-buttons { display: flex; }
     html[lang="en"] .demo-links { display: flex; }
     html[lang="en"] .footer-links { display: flex; }
+
+    /* In EN mode, show nav/demo inline (not block) */
+    html[lang="en"] .nav-link [data-lang="en"],
+    html[lang="en"] .demo-link [data-lang="en"] { display: inline; }
   </style>
 </head>
 <body>
 
-<div class="lang-toggle">
-  <button class="lang-btn active" data-lang-btn="es" onclick="setLang('es')">ES</button>
-  <button class="lang-btn" data-lang-btn="en" onclick="setLang('en')">EN</button>
-</div>
+<div id="progress-bar"></div>
+
+<nav class="top-nav">
+  <div class="nav-inner">
+    <span class="nav-brand">RAK</span>
+    <div class="nav-links">
+      <a href="#summary" class="nav-link"><span data-lang="es">Resumen</span><span data-lang="en">Summary</span></a>
+      <a href="#leadership" class="nav-link"><span data-lang="es">Liderazgo</span><span data-lang="en">Leadership</span></a>
+      <a href="#intelligence" class="nav-link"><span data-lang="es">Inteligencia</span><span data-lang="en">Intelligence</span></a>
+      <a href="#politics" class="nav-link"><span data-lang="es">Política</span><span data-lang="en">Politics</span></a>
+      <a href="#tools" class="nav-link"><span data-lang="es">Herramientas</span><span data-lang="en">Tools</span></a>
+    </div>
+    <div class="lang-toggle">
+      <button class="lang-btn active" data-lang-btn="es" onclick="setLang('es')">ES</button>
+      <button class="lang-btn" data-lang-btn="en" onclick="setLang('en')">EN</button>
+    </div>
+  </div>
+</nav>
 
 <script>
   function setLang(lang) {
@@ -555,13 +706,13 @@
 
 <main>
 
-  <div class="summary reveal">
+  <div class="summary reveal" id="summary">
     <h2><span class="title-icon"><svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg></span> <span data-lang="es">Resumen</span><span data-lang="en">Summary</span></h2>
     <p data-lang="es">Senior Analytics Manager con más de 10 años de experiencia en Data Science y Marketing Analytics para servicios financieros, retail, e-commerce y consultoría. Especialista en análisis de datos transaccionales y Digital Analytics mediante Machine Learning aplicado al comportamiento del consumidor. Experiencia en inteligencia y segmentación de clientes, Customer Experience, automatización de marketing y migración de procesos analíticos a la nube (AWS). Bilingüe (español/inglés), con trayectoria liderando equipos multidisciplinarios de Data Scientists, Data Engineers y Analistas.</p>
     <p data-lang="en">Senior Analytics Manager with 10+ years of experience in Data Science and Marketing Analytics for financial services, retail, e-commerce, and consulting. Specialized in transactional data analysis and Digital Analytics through Machine Learning applied to consumer behavior. Experienced in customer intelligence and segmentation, Customer Experience, marketing automation, and cloud migration of analytical processes (AWS). Bilingual (Spanish/English), with a track record leading multidisciplinary teams of Data Scientists, Data Engineers, and Analysts.</p>
   </div>
 
-  <div class="card reveal">
+  <div class="card reveal" id="leadership" data-section="leadership">
     <h2><span class="title-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"></polygon></svg></span> <span data-lang="es">Liderazgo &amp; Consultoría</span><span data-lang="en">Leadership &amp; Consulting</span></h2>
 
     <p data-lang="es">Con más de 10 años de experiencia, he liderado equipos de Data Scientists y Data Engineers en proyectos de alta visibilidad para clientes en servicios financieros, consumo masivo y retail. Mi enfoque combina la formación técnica de equipos con la entrega de resultados concretos y medibles para el negocio.</p>
@@ -582,47 +733,64 @@
     </ul>
   </div>
 
-  <div class="card reveal">
+  <div class="card reveal" id="intelligence" data-section="intelligence">
     <h2><span class="title-icon"><svg viewBox="0 0 24 24"><path d="M21.21 15.89A10 10 0 1 1 8 2.83"></path><path d="M22 12A10 10 0 0 0 12 2v10z"></path></svg></span> <span data-lang="es">Inteligencia de Clientes</span><span data-lang="en">Customer Intelligence</span></h2>
 
     <p data-lang="es">Especializado en el estudio del comportamiento del consumidor mediante métodos estadísticos y técnicas de machine learning para definir estrategias comerciales y de marketing basadas en evidencia empírica.</p>
     <p data-lang="en">Specialized in consumer behavior study using statistical methods and machine learning techniques to define commercial and marketing strategies based on empirical evidence.</p>
 
-    <ul>
-      <li data-lang="es">Cruce de comportamiento web (Adobe Analytics) con datos transaccionales y fuentes externas para generación de leads y perfilamiento de clientes.</li>
-      <li data-lang="en">Cross-referencing web behavior (Adobe Analytics) with transactional data and external sources for lead generation and customer profiling.</li>
+    <div class="bullet-group">
+      <div class="bullet-group-label" data-lang="es">Integración de datos & perfilamiento</div>
+      <div class="bullet-group-label" data-lang="en">Data integration & profiling</div>
+      <ul>
+        <li data-lang="es">Cruce de comportamiento web (Adobe Analytics) con datos transaccionales y fuentes externas para generación de leads y perfilamiento de clientes.</li>
+        <li data-lang="en">Cross-referencing web behavior (Adobe Analytics) with transactional data and external sources for lead generation and customer profiling.</li>
 
-      <li data-lang="es">Definición de métricas de Customer Experience y evaluación mediante diseño experimental del rendimiento financiero de puntos de contacto de marketing y ventas.</li>
-      <li data-lang="en">Defining Customer Experience metrics and evaluating the financial performance of marketing and sales touchpoints through experimental design.</li>
+        <li data-lang="es">Análisis de datos transaccionales en cuentas ETF para perfilamiento y segmentación de clientes en servicios financieros.</li>
+        <li data-lang="en">Transactional data analysis on ETF accounts for customer profiling and segmentation in financial services.</li>
 
-      <li data-lang="es">Análisis de datos transaccionales en cuentas ETF para perfilamiento y segmentación de clientes en servicios financieros.</li>
-      <li data-lang="en">Transactional data analysis on ETF accounts for customer profiling and segmentation in financial services.</li>
+        <li data-lang="es">Definición de métricas de Customer Experience y evaluación mediante diseño experimental del rendimiento financiero de puntos de contacto de marketing y ventas.</li>
+        <li data-lang="en">Defining Customer Experience metrics and evaluating the financial performance of marketing and sales touchpoints through experimental design.</li>
+      </ul>
+    </div>
 
-      <li data-lang="es">Segmentación basada en datos transaccionales de tienda para estrategias de marketing personalizado en retail.</li>
-      <li data-lang="en">Store transactional data-based segmentation for personalized marketing strategies in retail.</li>
+    <div class="bullet-group">
+      <div class="bullet-group-label" data-lang="es">Modelos de segmentación</div>
+      <div class="bullet-group-label" data-lang="en">Segmentation models</div>
+      <ul>
+        <li data-lang="es">Segmentación basada en datos transaccionales de tienda para estrategias de marketing personalizado en retail.</li>
+        <li data-lang="en">Store transactional data-based segmentation for personalized marketing strategies in retail.</li>
 
-      <li data-lang="es">Segmentación por patrones de compra mediante factorización de matrices no negativas y Bayes ingenuo.</li>
-      <li data-lang="en">Customer segmentation by purchase patterns using non-negative matrix factorization and naive Bayes.</li>
+        <li data-lang="es">Segmentación por patrones de compra mediante factorización de matrices no negativas y Bayes ingenuo.</li>
+        <li data-lang="en">Customer segmentation by purchase patterns using non-negative matrix factorization and naive Bayes.</li>
 
-      <li data-lang="es">Segmentación por comportamiento (RFM) — <a href="https://github.com/rarmijok/rarmijok.github.io/raw/master/Images/RFM.png">ver imagen</a>.</li>
-      <li data-lang="en">Segmentation by coarse behavior patterns (RFM) — <a href="https://github.com/rarmijok/rarmijok.github.io/raw/master/Images/RFM.png">view image</a>.</li>
+        <li data-lang="es">Segmentación por comportamiento (RFM) — <a href="https://github.com/rarmijok/rarmijok.github.io/raw/master/Images/RFM.png">ver imagen</a>.</li>
+        <li data-lang="en">Segmentation by coarse behavior patterns (RFM) — <a href="https://github.com/rarmijok/rarmijok.github.io/raw/master/Images/RFM.png">view image</a>.</li>
 
-      <li data-lang="es">Afinidad entre marcas para estrategias de recomendación y cross-selling vía reglas de asociación (Apriori) — <a href="https://github.com/rarmijok/rarmijok.github.io/raw/master/Images/Afinidad.png">ver imagen</a>.</li>
-      <li data-lang="en">Brand affinity for recommendation and cross-selling strategies using association rule mining (Apriori) — <a href="https://github.com/rarmijok/rarmijok.github.io/raw/master/Images/Afinidad.png">view image</a>.</li>
+        <li data-lang="es">Afinidad entre marcas para estrategias de recomendación y cross-selling vía reglas de asociación (Apriori) — <a href="https://github.com/rarmijok/rarmijok.github.io/raw/master/Images/Afinidad.png">ver imagen</a>.</li>
+        <li data-lang="en">Brand affinity for recommendation and cross-selling strategies using association rule mining (Apriori) — <a href="https://github.com/rarmijok/rarmijok.github.io/raw/master/Images/Afinidad.png">view image</a>.</li>
+      </ul>
+    </div>
 
-      <li data-lang="es">Predicción de abandono (Churn) mediante estimación de ciclo de vida (Pareto/NBD).</li>
-      <li data-lang="en">Churn prediction using lifetime value estimation (Pareto/NBD).</li>
+    <div class="bullet-group">
+      <div class="bullet-group-label" data-lang="es">Medición & predicción</div>
+      <div class="bullet-group-label" data-lang="en">Measurement & prediction</div>
+      <ul>
+        <li data-lang="es">Predicción de abandono (Churn) mediante estimación de ciclo de vida (Pareto/NBD).</li>
+        <li data-lang="en">Churn prediction using lifetime value estimation (Pareto/NBD).</li>
 
-      <li data-lang="es">Medición de impacto de intervenciones con y sin contrafactual (A/B testing y series de tiempo).</li>
-      <li data-lang="en">Impact measurement of interventions with and without counterfactual (A/B testing and time series).</li>
+        <li data-lang="es">Medición de impacto de intervenciones con y sin contrafactual (A/B testing y series de tiempo).</li>
+        <li data-lang="en">Impact measurement of interventions with and without counterfactual (A/B testing and time series).</li>
 
-      <li data-lang="es">Detección de anomalías en patrones de comportamiento.</li>
-      <li data-lang="en">Anomaly detection in behavior patterns.</li>
-    </ul>
+        <li data-lang="es">Detección de anomalías en patrones de comportamiento.</li>
+        <li data-lang="en">Anomaly detection in behavior patterns.</li>
+      </ul>
+    </div>
+
     <a class="repo-link" href="https://github.com/rarmijok/Customer-intelligence" target="_blank">⌥ GitHub</a>
   </div>
 
-  <div class="card reveal">
+  <div class="card reveal" id="politics" data-section="politics">
     <h2><span class="title-icon"><svg viewBox="0 0 24 24"><path d="M12 20V10"></path><path d="M18 20V4"></path><path d="M6 20v-4"></path></svg></span> <span data-lang="es">Política Analítica</span><span data-lang="en">Analytical Politics</span></h2>
 
     <p data-lang="es">Investigación en análisis de preferencias políticas usando aplicaciones empíricas de la teoría espacial del voto (Unfolding multidimensional), explorando el espacio ideológico de forma cuantitativa.</p>
@@ -652,7 +820,7 @@
     <a class="repo-link" href="https://github.com/rarmijok/Analytical-Politics" target="_blank">⌥ GitHub</a>
   </div>
 
-  <div class="card reveal">
+  <div class="card reveal" id="tools" data-section="tools">
     <h2><span class="title-icon"><svg viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path></svg></span> <span data-lang="es">Herramientas</span><span data-lang="en">Tools</span></h2>
 
     <div class="tech-categories">
@@ -746,13 +914,15 @@
   </div>
 </footer>
 
+<button id="scroll-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Volver arriba">
+  <svg viewBox="0 0 24 24"><polyline points="18 15 12 9 6 15"></polyline></svg>
+</button>
+
 <script>
-  // Scroll reveal animation
+  // Scroll reveal
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-      }
+      if (entry.isIntersecting) entry.target.classList.add('visible');
     });
   }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
 
@@ -760,6 +930,34 @@
     el.style.transitionDelay = `${i * 0.08}s`;
     observer.observe(el);
   });
+
+  // Scroll progress bar + scroll-to-top visibility
+  const progressBar = document.getElementById('progress-bar');
+  const scrollTopBtn = document.getElementById('scroll-top');
+
+  window.addEventListener('scroll', () => {
+    const scrolled = window.scrollY;
+    const total = document.documentElement.scrollHeight - window.innerHeight;
+    progressBar.style.width = (scrolled / total * 100) + '%';
+    scrollTopBtn.classList.toggle('visible', scrolled > 400);
+  });
+
+  // Active nav link tracking
+  const sections = document.querySelectorAll('main [id]');
+  const navLinks = document.querySelectorAll('.nav-link');
+  const NAV_HEIGHT = 52;
+
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(section => {
+      if (window.scrollY >= section.offsetTop - NAV_HEIGHT - 80) {
+        current = section.id;
+      }
+    });
+    navLinks.forEach(link => {
+      link.classList.toggle('active', link.getAttribute('href') === '#' + current);
+    });
+  }, { passive: true });
 </script>
 
 </body>
